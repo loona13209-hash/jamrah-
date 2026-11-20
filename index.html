@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>جمرة | توصيل الحطب ومستلزمات البر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2a1a16; --bg2:#3a2621; --bg3:#4a312a;
+  --cream:#f3e2d0; --beige:#e8cbb0; --copper:#e9956b; --copper2:#d97a4a;
+  --ink:#2b1a15; --muted:#6f5649; --line:rgba(43,26,21,.15);
+  --sbh:34px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:'Cairo','Tajawal','Segoe UI',Tahoma,Arial,sans-serif;
+  background:radial-gradient(1200px 700px at 50% -10%,#6b4a3c 0%,#3a2621 45%,#1d110e 100%);
+  color:var(--cream); overflow:hidden;
+}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,textarea,select{font-family:inherit}
+svg{display:block}
+
+/* ===== شريط التحكم العلوي (للعرض) ===== */
+.bar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 12px;z-index:50;
+  background:rgba(20,12,10,.55);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:nowrap}
+.bar .brand{display:flex;align-items:center;gap:6px;font-weight:800;color:var(--copper);margin-inline-end:auto}
+.bar .brand svg{width:20px;height:24px}
+.tb{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:rgba(243,226,208,.12);border:1px solid rgba(243,226,208,.2);font-size:13px;font-weight:700;white-space:nowrap;transition:.15s}
+.tb:hover{background:rgba(243,226,208,.22)}
+.tb:active{transform:scale(.96)}
+.tb svg{width:16px;height:16px}
+.tb.hot{background:var(--copper);color:var(--ink);border-color:transparent}
+
+.stage{position:fixed;top:52px;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:14px}
+.phone{position:relative;width:392px;height:min(100%,810px);border-radius:46px;border:9px solid #120b09;background:var(--bg);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px #4a3a34,inset 0 0 0 1px rgba(255,255,255,.05);overflow:hidden;isolation:isolate}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:96px;height:24px;border-radius:20px;background:#0c0605;z-index:40}
+.status{position:absolute;top:0;left:0;right:0;height:var(--sbh);display:flex;justify-content:space-between;align-items:center;padding:6px 26px 0;font-size:13px;font-weight:700;z-index:39;color:var(--cream);direction:ltr;pointer-events:none}
+.status.light{color:var(--ink)}
+.status .ic{display:flex;gap:5px;align-items:center}
+
+body.full .stage{padding:0}
+body.full .phone{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;--sbh:0px}
+body.full .notch,body.full .status{display:none}
+@media (max-width:520px){
+  .stage{padding:0}
+  .phone{width:100%;height:100%;border:0;border-radius:0;box-shadow:none;--sbh:0px}
+  .notch,.status{display:none}
+  .tb span.lbl{display:none}
+  .bar .brand span{display:none}
+}
+
+/* ===== العرض والشاشات ===== */
+.view{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:calc(var(--sbh) + 10px) 16px 120px;scrollbar-width:none;animation:fade .35s ease}
+.view::-webkit-scrollbar{display:none}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.inner{max-width:640px;margin:0 auto}
+
+/* شاشة البداية */
+.splash{padding:0;overflow:hidden;background:linear-gradient(#0b0f1f 0%,#1e1a2a 40%,#3b2a24 70%,#4a3022 100%)}
+.splash .stars{position:absolute;inset:0;opacity:.9;
+  background-image:radial-gradient(1.5px 1.5px at 20% 12%,#fff,transparent),radial-gradient(1px 1px at 70% 8%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 22%,#fff,transparent),radial-gradient(1px 1px at 85% 25%,#fff,transparent),radial-gradient(1px 1px at 10% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 60% 16%,#fff,transparent),radial-gradient(1px 1px at 92% 6%,#fff,transparent),radial-gradient(1px 1px at 30% 5%,#fff,transparent),radial-gradient(1px 1px at 52% 30%,#fff,transparent);
+  animation:twinkle 4s infinite alternate}
+@keyframes twinkle{from{opacity:.55}to{opacity:1}}
+.splash .scene{position:absolute;left:0;right:0;bottom:0;height:62%}
+.splash .scene svg{width:100%;height:100%}
+.splash .logo{position:absolute;top:calc(var(--sbh) + 9%);left:0;right:0;text-align:center}
+.splash .logo svg{width:92px;height:110px;margin:0 auto;color:var(--copper);filter:drop-shadow(0 6px 18px rgba(233,149,107,.35))}
+.splash .logo h1{font-size:64px;font-weight:900;color:var(--copper);line-height:1.1;letter-spacing:-1px;margin-top:2px}
+.splash .logo p{font-size:15px;color:#e6cfc0;margin-top:8px;padding:0 18px}
+.splash .go{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:min(280px,78%);display:flex;align-items:center;justify-content:center;gap:10px;padding:15px;border-radius:999px;background:var(--beige);color:var(--ink);font-weight:800;font-size:18px;box-shadow:0 10px 30px rgba(0,0,0,.4);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 0 rgba(233,149,107,.5)}50%{box-shadow:0 10px 30px rgba(0,0,0,.4),0 0 0 12px rgba(233,149,107,0)}}
+.flick{transform-origin:50% 100%;animation:flick 1.1s infinite alternate ease-in-out}
+.flick.b{animation-duration:.8s;animation-delay:-.3s}
+.flick.c{animation-duration:.6s;animation-delay:-.5s}
+@keyframes flick{0%{transform:scale(1,1) skewX(0)}50%{transform:scale(.95,1.06) skewX(2deg)}100%{transform:scale(1.04,.94) skewX(-2deg)}}
+
+/* الرئيسية */
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.logo-row{display:flex;align-items:center;gap:6px;color:var(--copper)}
+.logo-row svg{width:36px;height:44px}
+.logo-row b{font-size:36px;font-weight:900;color:var(--beige)}
+.ibtn{position:relative;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:var(--beige)}
+.ibtn:active{background:rgba(255,255,255,.1)}
+.ibtn svg{width:26px;height:26px}
+.badge{position:absolute;top:2px;right:2px;min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--copper);color:var(--ink);font-size:11px;font-weight:800;display:grid;place-items:center}
+.hero{position:relative;height:200px;border-radius:26px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.hero>svg{position:absolute;inset:0;width:100%;height:100%}
+.hero .tx{position:absolute;top:34px;right:20px;text-align:right;font-size:24px;font-weight:800;line-height:1.35;color:#fff3e6;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.hero .cta{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:11px 34px;border-radius:999px;background:var(--beige);color:var(--ink);font-weight:800;font-size:17px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.hero .cta svg{width:20px;height:20px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 18px}
+.tile{background:var(--cream);color:var(--ink);border-radius:22px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:700;font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.25);transition:.15s}
+.tile:active{transform:scale(.95)}
+.tile svg{width:46px;height:46px;color:var(--ink)}
+.sec{display:flex;align-items:center;gap:6px;font-weight:800;font-size:18px;color:var(--beige);margin:6px 2px 10px}
+.sec svg{width:20px;height:24px;color:var(--copper)}
+.offer{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#efd3b9,#e3b995);color:var(--ink);border-radius:24px;padding:14px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.offer .t{flex:1}
+.offer .t h4{font-size:19px;font-weight:800;display:flex;align-items:center;gap:6px}
+.offer .t h4 svg{width:22px;height:22px;color:#6b4a3a}
+.offer .t p{font-size:14px;color:#5b4338;margin:2px 0 8px}
+.offer .t .pr{font-size:13px;color:#5b4338;margin-bottom:8px}
+.offer .t .pr s{opacity:.6;margin-inline-start:6px}
+.offer .im{width:42%;aspect-ratio:1.2;border-radius:16px;overflow:hidden}
+.offer .im svg{width:100%;height:100%}
+
+/* صفحات داخلية */
+.top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.top .back{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:var(--beige)}
+.top .back:active{background:rgba(255,255,255,.1)}
+.top .back svg{width:26px;height:26px}
+.top h2{font-size:26px;font-weight:800;color:var(--beige);flex:1;display:flex;align-items:center;gap:10px}
+.top h2 svg{width:38px;height:38px;color:var(--copper)}
+.top .cartbtn{margin-inline-start:auto}
+
+.pcard{display:flex;gap:12px;align-items:stretch;background:var(--cream);color:var(--ink);border-radius:24px;padding:14px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.pcard .t{flex:1;display:flex;flex-direction:column}
+.pcard h3{font-size:23px;font-weight:800}
+.pcard p{font-size:14.5px;color:var(--muted);line-height:1.5;margin-top:2px;flex:1}
+.pcard .pr{font-weight:800;font-size:17px;margin:10px 0 8px}
+.pcard .im{width:44%;min-height:130px;border-radius:16px;overflow:hidden;background:#e9d3bd}
+.pcard .im svg{width:100%;height:100%}
+.btn-dark{align-self:flex-start;background:var(--ink);color:var(--cream);border-radius:999px;padding:9px 22px;font-weight:800;font-size:14px;transition:.15s}
+.btn-dark:active{transform:scale(.94)}
+.btn-dark.big{width:100%;padding:14px;font-size:17px;align-self:stretch;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-copper{background:var(--copper);color:var(--ink);border-radius:999px;padding:14px;font-weight:800;font-size:17px;width:100%;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-copper:active{transform:scale(.97)}
+.btn-ghost{width:100%;padding:14px;border-radius:999px;border:1.5px solid rgba(243,226,208,.35);font-weight:800;font-size:17px;color:var(--beige);display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.btn-ghost svg{width:24px;height:24px}
+
+.list{background:var(--cream);color:var(--ink);border-radius:24px;padding:6px 18px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.row{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:16px;width:100%;text-align:right}
+.row:last-child{border-bottom:0}
+.row svg{width:30px;height:30px;color:#3d2a23;flex:none}
+.row .sub{display:block;font-size:12.5px;color:var(--muted);font-weight:500}
+.row .chev{margin-inline-start:auto;width:18px;height:18px;opacity:.5}
+
+.contact{background:var(--cream);color:var(--ink);border-radius:24px;padding:18px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.contact .wel{font-weight:700;font-size:15.5px;line-height:1.6;margin-bottom:12px}
+.copt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;border:1.5px solid rgba(43,26,21,.25);border-radius:16px;padding:12px 16px;margin-bottom:10px;transition:.15s}
+.copt:active{background:rgba(43,26,21,.08);transform:scale(.98)}
+.copt .tt{flex:1;font-weight:700;font-size:15.5px;line-height:1.35}
+.copt .tt small{display:block;font-weight:600;font-size:15px;color:#3d2a23;direction:ltr;text-align:right}
+.copt svg{width:30px;height:30px;color:var(--ink)}
+.send{width:100%;background:var(--ink);color:var(--cream);border-radius:14px;padding:14px;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+.send svg{width:22px;height:22px}
+
+/* الطلبات والحساب */
+.empty{text-align:center;padding:50px 10px;color:#d8bfae}
+.empty svg{width:84px;height:84px;margin:0 auto 14px;color:var(--copper);opacity:.9}
+.empty h3{font-size:20px;color:var(--beige);margin-bottom:6px}
+.empty p{font-size:14px;margin-bottom:18px}
+.ocard{background:var(--cream);color:var(--ink);border-radius:22px;padding:16px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.ocard .oh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.ocard .oh b{font-size:17px}
+.pill{font-size:12px;font-weight:800;padding:4px 12px;border-radius:99px;background:var(--copper);color:var(--ink)}
+.pill.done{background:#6fa86f;color:#fff}
+.ocard .items{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:10px}
+.ocard .tot{display:flex;justify-content:space-between;font-weight:800;margin:8px 0 14px;font-size:16px}
+.steps{display:flex;align-items:flex-start;justify-content:space-between;position:relative;margin:6px 4px 2px}
+.steps:before{content:"";position:absolute;top:9px;right:10%;left:10%;height:3px;background:rgba(43,26,21,.15)}
+.step{flex:1;text-align:center;font-size:11px;color:#8a7468;font-weight:700;position:relative;line-height:1.3}
+.step i{display:block;width:20px;height:20px;border-radius:50%;background:#d3bba6;margin:0 auto 6px;position:relative;z-index:1;border:3px solid var(--cream)}
+.step.on{color:var(--ink)}
+.step.on i{background:var(--copper)}
+.step.cur i{box-shadow:0 0 0 5px rgba(233,149,107,.35);animation:pulse2 1.2s infinite}
+@keyframes pulse2{50%{box-shadow:0 0 0 8px rgba(233,149,107,.08)}}
+
+.prof{background:var(--cream);color:var(--ink);border-radius:24px;padding:20px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.28);margin-bottom:14px}
+.avatar{width:84px;height:84px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,var(--copper),#b4562b);display:grid;place-items:center;color:#fff;font-size:34px;font-weight:900;box-shadow:0 6px 16px rgba(180,86,43,.4)}
+.prof h3{font-size:21px;font-weight:800}
+.prof p{color:var(--muted);font-size:13.5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.stats div{background:rgba(43,26,21,.07);border-radius:14px;padding:10px 4px}
+.stats b{display:block;font-size:20px;color:#b4562b}
+.stats span{font-size:12px;color:var(--muted);font-weight:700}
+.note{display:flex;gap:10px;align-items:flex-start;background:rgba(233,149,107,.14);border:1px dashed rgba(233,149,107,.6);color:#f4d6c1;border-radius:16px;padding:12px 14px;font-size:13px;line-height:1.7;margin-top:14px}
+.note svg{width:22px;height:22px;flex:none;color:var(--copper);margin-top:2px}
+
+/* التنقل السفلي */
+.nav{position:absolute;left:10px;right:10px;bottom:10px;z-index:20;max-width:640px;margin:0 auto;background:var(--cream);border-radius:28px;display:flex;padding:8px 6px;box-shadow:0 10px 30px rgba(0,0,0,.5);transform:translateY(0);transition:transform .3s}
+.nav.hide{transform:translateY(130%)}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:#7d6559;font-weight:700;font-size:12.5px;padding:6px 0;border-radius:18px;position:relative}
+.nav button svg{width:28px;height:28px}
+.nav button.on{color:var(--ink);font-weight:900}
+.nav button .nb{position:absolute;top:2px;right:calc(50% - 22px);background:var(--copper);color:var(--ink);font-size:10px;min-width:16px;height:16px;border-radius:9px;display:grid;place-items:center;padding:0 4px;font-weight:800}
+
+/* شريط السلة العائم */
+.cartbar{position:absolute;left:14px;right:14px;bottom:92px;z-index:19;max-width:612px;margin:0 auto;display:none;align-items:center;justify-content:space-between;background:var(--copper);color:var(--ink);padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.5);animation:rise .3s}
+.cartbar.show{display:flex}
+.cartbar.low{bottom:20px}
+.cartbar .l{display:flex;align-items:center;gap:10px}
+.cartbar svg{width:24px;height:24px}
+@keyframes rise{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+
+/* النوافذ المنبثقة */
+.wrap{position:absolute;inset:0;background:rgba(10,5,4,.62);z-index:60;display:none;align-items:flex-end;justify-content:center}
+.wrap.show{display:flex;animation:fadeBg .25s}
+@keyframes fadeBg{from{opacity:0}to{opacity:1}}
+.sheet{width:100%;max-width:640px;max-height:88%;overflow-y:auto;background:var(--cream);color:var(--ink);border-radius:28px 28px 0 0;padding:14px 18px 22px;animation:up .3s ease;scrollbar-width:none}
+.sheet::-webkit-scrollbar{display:none}
+@keyframes up{from{transform:translateY(60%)}to{transform:none}}
+.grab{width:46px;height:5px;border-radius:9px;background:rgba(43,26,21,.25);margin:0 auto 12px}
+.sheet h3{font-size:21px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sheet h3 svg{width:26px;height:26px;color:#b4562b}
+.citem{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.citem .ci{width:62px;height:54px;border-radius:12px;overflow:hidden;flex:none;background:#e9d3bd}
+.citem .ci svg{width:100%;height:100%}
+.citem .cn{flex:1;font-weight:800;font-size:15px}
+.citem .cn small{display:block;color:var(--muted);font-weight:600;font-size:12.5px}
+.qty{display:flex;align-items:center;gap:4px;background:rgba(43,26,21,.08);border-radius:999px;padding:3px}
+.qty button{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:18px;font-weight:800}
+.qty button svg{width:16px;height:16px}
+.qty b{min-width:26px;text-align:center;font-size:16px}
+.sum{display:flex;justify-content:space-between;padding:8px 0;font-weight:700}
+.sum.t{font-size:19px;font-weight:900;border-top:2px solid var(--ink);margin-top:6px;padding-top:12px}
+.fld{margin:10px 0}
+.fld label{display:block;font-weight:700;font-size:13.5px;margin-bottom:5px;color:#4a352c}
+.fld input,.fld textarea,.fld select{width:100%;padding:12px 14px;border-radius:14px;border:1.5px solid rgba(43,26,21,.25);background:#fbf3ea;font-size:15px;color:var(--ink);outline:0}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--copper2)}
+.fld textarea{min-height:90px;resize:none}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 10px}
+.pay label{border:1.5px solid rgba(43,26,21,.25);border-radius:14px;padding:12px;text-align:center;font-weight:700;font-size:14px;cursor:pointer;display:block;margin:0}
+.pay input{display:none}
+.pay input:checked+span{color:#b4562b}
+.pay label:has(input:checked){border-color:var(--copper2);background:rgba(233,149,107,.18)}
+.okbox{text-align:center;padding:10px 0 4px}
+.okbox .ck{width:84px;height:84px;border-radius:50%;background:#6fa86f;color:#fff;display:grid;place-items:center;margin:0 auto 12px;animation:pop .5s}
+.okbox .ck svg{width:46px;height:46px}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.okbox h3{justify-content:center;font-size:22px}
+.okbox p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:14px}
+.nitem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.nitem:last-child{border-bottom:0}
+.nitem .dot{width:10px;height:10px;border-radius:50%;background:var(--copper2);margin-top:8px;flex:none}
+.nitem.read .dot{background:#cdb8a8}
+.nitem b{display:block;font-size:15px}
+.nitem span{font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-line{width:100%;padding:13px;border-radius:999px;border:1.5px solid var(--ink);font-weight:800;font-size:15px}
+
+.toast{position:absolute;top:calc(var(--sbh) + 14px);left:50%;transform:translate(-50%,-30px);opacity:0;z-index:80;background:var(--ink);color:var(--cream);border:1px solid rgba(233,149,107,.6);padding:10px 20px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap;pointer-events:none;transition:.3s;box-shadow:0 10px 24px rgba(0,0,0,.5);max-width:92%;overflow:hidden;text-overflow:ellipsis}
+.toast.show{transform:translate(-50%,0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- رموز مشتركة -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flame" viewBox="0 0 100 120">
+    <path fill-rule="evenodd" fill="currentColor" d="M54 3C58 27 90 45 90 80c0 23-17 39-40 39S10 103 10 80c0-18 9-29 17-41 3 12 9 19 15 21C38 41 45 20 54 3ZM50 111c-10 0-18-7-18-17 0-12 12-18 15-31 8 8 21 18 21 31 0 10-8 17-18 17Z"/>
+  </symbol>
+</svg>
+
+<div class="bar">
+  <div class="brand"><svg><use href="#flame" style="color:#e9956b"/></svg><span>جمرة · نموذج أولي</span></div>
+  <button class="tb" id="btnMode"></button>
+  <button class="tb" id="btnFs"></button>
+  <button class="tb hot" id="btnReset"></button>
+</div>
+
+<div class="stage">
+  <div class="phone" id="phone">
+    <div class="notch"></div>
+    <div class="status" id="status"><span>9:41</span><span class="ic">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor"><rect x=".5" y=".5" width="20" height="11" rx="3"/><rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor" stroke="none"/><rect x="22" y="4" width="2" height="4" rx="1" fill="currentColor" stroke="none"/></svg>
+    </span></div>
+
+    <div id="view" class="view"></div>
+    <div id="cartbar" class="cartbar"></div>
+    <nav id="nav" class="nav hide"></nav>
+    <div id="wrap" class="wrap"><div class="sheet" id="sheet"></div></div>
+    <div id="toast" class="toast"></div>
+  </div>
+</div>
+
+<script>
+/* ===================== أيقونات ===================== */
+const S = (d, extra='') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ${extra}>${d}</svg>`;
+const I = {
+  bell:S('<path d="M6 9a6 6 0 1 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9Z"/><path d="M10 20a2 2 0 0 0 4 0"/>'),
+  back:S('<path d="M4 12h16M14 6l6 6-6 6"/>'),
+  cart:S('<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 8H6.2"/>'),
+  headset:S('<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4.5" height="7" rx="2"/><rect x="17" y="13" width="4.5" height="7" rx="2"/><path d="M20 20c0 1.5-2 2.5-5 2.5"/>','stroke-width="1.9"'),
+  logs:S('<rect x="3" y="14" width="18" height="6" rx="3"/><rect x="5" y="8" width="14" height="6" rx="3"/><rect x="7" y="2.5" width="10" height="5.5" rx="2.7"/><circle cx="18" cy="17" r=".6" fill="currentColor"/>'),
+  gas:S('<path d="M9 3h6v2.5l1.2 1.3A5 5 0 0 1 18.500 11v8a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-8a5 5 0 0 1 2.300-4.200L9 5.500Z" fill="currentColor" fill-opacity=".85"/><path d="M10 3V2h4v1"/>'),
+  truck:S('<path d="M2 6h11v10H2zM13 9h4.5l3 3.5V16H13z"/><circle cx="7" cy="17.5" r="2" fill="currentColor"/><circle cx="17" cy="17.5" r="2" fill="currentColor"/>'),
+  card:S('<rect x="2" y="5" width="20" height="14" rx="2.5" fill="currentColor"/><path d="M2 10h20" stroke="#f3e2d0"/><path d="M5.500 15h4" stroke="#f3e2d0"/>'),
+  pin:S('<path d="M12 22s7-6.200 7-12a7 7 0 1 0-14 0c0 5.800 7 12 7 12Z" fill="currentColor"/><circle cx="12" cy="10" r="2.600" fill="#f3e2d0" stroke="none"/>'),
+  phone:S('<path d="M5 3h4l2 5-2.500 1.500a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" fill="currentColor"/>'),
+  wa:S('<path d="M3 21l1.400-4.500A9 9 0 1 1 8 20Z"/><path d="M8.800 8.500c.3 3 2.700 5.500 6 6.500l1.300-1.400-2-1-.9.800c-1-.5-1.800-1.300-2.300-2.300l.8-.9-1-2Z" fill="currentColor"/>'),
+  mail:S('<rect x="2.500" y="5" width="19" height="14" rx="2.500" fill="currentColor"/><path d="M3 7l9 6.500L21 7" stroke="#f3e2d0"/>'),
+  send:S('<path d="M21 3 3 10.500l6.500 2.500L12 20l2.500-5.500Z"/><path d="m9.500 13 11.500-10"/>'),
+  box:S('<path d="M12 2.500 21 7v10l-9 4.500L3 17V7Z"/><path d="m3 7 9 4.500L21 7M12 11.500v10"/>'),
+  user:S('<circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 4-6 8-6s7.200 2 8 6"/>'),
+  dots:S('<circle cx="5" cy="12" r="1.600" fill="currentColor"/><circle cx="12" cy="12" r="1.600" fill="currentColor"/><circle cx="19" cy="12" r="1.600" fill="currentColor"/>'),
+  home:S('<path d="M3 11 12 3l9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z" fill="currentColor" fill-opacity=".9"/>'),
+  tag:S('<path d="M3 12V4h8l10 10-8 8Z"/><circle cx="7.500" cy="8.500" r="1.200" fill="currentColor"/>'),
+  chat:S('<path d="M21 12a8 8 0 0 1-11.800 7L3 21l2-5.500A8 8 0 1 1 21 12Z"/><circle cx="8.500" cy="12" r=".9" fill="currentColor"/><circle cx="12" cy="12" r=".9" fill="currentColor"/><circle cx="15.500" cy="12" r=".9" fill="currentColor"/>'),
+  check:S('<path d="m4 12.500 5 5L20 6.500" stroke-width="3"/>'),
+  plus:S('<path d="M12 5v14M5 12h14" stroke-width="2.600"/>'),
+  minus:S('<path d="M5 12h14" stroke-width="2.600"/>'),
+  info:S('<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.500v.5" stroke-width="2.200"/>'),
+  chev:S('<path d="m15 5-7 7 7 7"/>'),
+  heart:S('<path d="M12 21s-8-5.500-8-11a4.500 4.500 0 0 1 8-2.800A4.500 4.500 0 0 1 20 10c0 5.500-8 11-8 11Z"/>'),
+  pinline:S('<path d="M12 22s7-6.200 7-12a7 7 0 1 0-14 0c0 5.800 7 12 7 12Z"/><circle cx="12" cy="10" r="2.500"/>'),
+  share:S('<circle cx="18" cy="5" r="2.500"/><circle cx="6" cy="12" r="2.500"/><circle cx="18" cy="19" r="2.500"/><path d="m8.200 10.800 7.600-4.600M8.200 13.200l7.600 4.600"/>'),
+  star:S('<path d="m12 3 2.800 5.700 6.200.9-4.500 4.400 1 6.200L12 17.200 6.500 20.200l1-6.200L3 9.600l6.200-.9Z"/>'),
+  card2:S('<rect x="2" y="5" width="20" height="14" rx="2.500"/><path d="M2 10h20"/>'),
+  globe:S('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),
+  trash:S('<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>')
+};
+const flameIcon = (cls='') => `<svg class="${cls}"><use href="#flame"/></svg>`;
+
+/* ===================== رسومات المنتجات (SVG) ===================== */
+function rng(s){return ()=> (s=(s*9301+49297)%233280)/233280}
+function logsSVG(seed,hue,lo,hi,count=13){
+  const r=rng(seed); const arr=[];
+  for(let i=0;i<count;i++){arr.push({x:14+r()*110,y:25+r()*105,len:62+r()*55,ang:-38+r()*76,th:11+r()*9,l:lo+r()*(hi-lo)})}
+  arr.sort((a,b)=>a.y-b.y);
+  let o=`<svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="g${seed}" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#f1e0cd"/><stop offset="1" stop-color="#dcc3a8"/></radialGradient></defs><rect width="200" height="160" fill="url(#g${seed})"/><ellipse cx="100" cy="146" rx="86" ry="9" fill="rgba(60,35,20,.25)"/>`;
+  arr.forEach(a=>{
+    const col=`hsl(${hue} 42% ${a.l}%)`,dark=`hsl(${hue} 40% ${a.l-9}%)`;
+    o+=`<g transform="translate(${a.x.toFixed(1)} ${a.y.toFixed(1)}) rotate(${a.ang.toFixed(1)})">
+      <rect width="${a.len.toFixed(1)}" height="${a.th.toFixed(1)}" rx="${(a.th/2.6).toFixed(1)}" fill="${col}"/>
+      <path d="M3 ${(a.th*.3).toFixed(1)}H${(a.len-8).toFixed(1)}M5 ${(a.th*.62).toFixed(1)}H${(a.len-5).toFixed(1)}M10 ${(a.th*.85).toFixed(1)}H${(a.len*.7).toFixed(1)}" stroke="${dark}" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>
+      <ellipse cx="${a.len.toFixed(1)}" cy="${(a.th/2).toFixed(1)}" rx="${(a.th/3).toFixed(1)}" ry="${(a.th/2).toFixed(1)}" fill="#d8b58a"/>
+      <ellipse cx="${a.len.toFixed(1)}" cy="${(a.th/2).toFixed(1)}" rx="${(a.th/6).toFixed(1)}" ry="${(a.th/4).toFixed(1)}" fill="none" stroke="#a97c52" stroke-width="1"/>
+    </g>`;
+  });
+  return o+'</svg>';
+}
+const shabbaSVG=()=>`<svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sh1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1dcc8"/><stop offset="1" stop-color="#e5c9ae"/></linearGradient></defs><rect width="200" height="160" fill="url(#sh1)"/><ellipse cx="100" cy="136" rx="62" ry="8" fill="rgba(60,35,20,.22)"/>
+<polygon points="46,62 100,40 156,62 100,86" fill="#ffffff"/><polygon points="46,62 100,86 100,134 46,110" fill="#e8e6e4"/><polygon points="156,62 100,86 100,134 156,110" fill="#cfcdcc"/><polygon points="46,62 100,40 156,62 100,86" fill="none" stroke="#f0eeed" stroke-width="1"/><path d="M60 70l20 8M120 76l22-9M72 100l16 8" stroke="#fff" stroke-width="2" opacity=".6" stroke-linecap="round"/></svg>`;
+const gasSVG=()=>`<svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gs1" x1="0" x2="1"><stop offset="0" stop-color="#1f4fa8"/><stop offset=".4" stop-color="#3f7be0"/><stop offset="1" stop-color="#16397c"/></linearGradient></defs><rect width="200" height="160" fill="#f0dfcc"/><ellipse cx="100" cy="148" rx="52" ry="7" fill="rgba(60,35,20,.25)"/>
+<path d="M78 40h44v8c14 4 22 14 22 30v56c0 8-6 12-14 12H70c-8 0-14-4-14-12V78c0-16 8-26 22-30z" fill="url(#gs1)"/><rect x="86" y="22" width="28" height="22" rx="4" fill="#8a8f98"/><rect x="92" y="14" width="16" height="12" rx="3" fill="#b8bcc4"/><path d="M80 40a20 20 0 0 1 40 0" stroke="#7a808a" stroke-width="5" fill="none"/>
+<g transform="translate(82 74) scale(.36)" fill="#f0b07f"><path fill-rule="evenodd" d="M54 3C58 27 90 45 90 80c0 23-17 39-40 39S10 103 10 80c0-18 9-29 17-41 3 12 9 19 15 21C38 41 45 20 54 3ZM50 111c-10 0-18-7-18-17 0-12 12-18 15-31 8 8 21 18 21 31 0 10-8 17-18 17Z"/></g>
+<text x="100" y="124" text-anchor="middle" font-size="11" font-weight="800" fill="#f0c9a8" font-family="Cairo,Tahoma,sans-serif">جمرة</text><path d="M66 70c-3 14-3 40 0 60" stroke="rgba(255,255,255,.35)" stroke-width="5" stroke-linecap="round" fill="none"/></svg>`;
+
+const IMG = {
+  shafa:()=>logsSVG(11,22,26,36), hail:()=>logsSVG(23,27,30,42), samar:()=>logsSVG(37,18,21,31),
+  offer:()=>logsSVG(51,24,27,38), shabba:shabbaSVG, gas:gasSVG
+};
+
+const heroSVG=()=>`<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a3a"/><stop offset=".45" stop-color="#b3694a"/><stop offset="1" stop-color="#e6a56f"/></linearGradient><linearGradient id="hd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9774f"/><stop offset="1" stop-color="#7d4a33"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd08a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd08a" stop-opacity="0"/></radialGradient>
+<linearGradient id="shade" x1="1" x2="0"><stop offset="0" stop-color="#2a1a16" stop-opacity="0"/><stop offset="1" stop-color="#2a1a16" stop-opacity=".55"/></linearGradient></defs>
+<rect width="400" height="200" fill="url(#hs)"/>
+<path d="M0 120 Q80 96 160 118 T330 108 T420 120 V200H0Z" fill="#a8634a"/>
+<path d="M0 140 Q120 118 220 140 T420 136 V200H0Z" fill="url(#hd)"/>
+<path d="M70 70c0-8 10-14 22-14s18 6 18 12c8-2 18 2 18 10s-10 12-18 10c-4 6-18 8-26 4-12 2-20-6-14-12-6-2-6-8 0-10Z" fill="#4a3a2a" opacity=".85" transform="translate(40 -4)"/>
+<path d="M132 130c0-30 4-45 6-60" stroke="#3a2a1e" stroke-width="5" fill="none" stroke-linecap="round"/>
+<ellipse cx="318" cy="156" rx="40" ry="26" fill="url(#glow)"/>
+<polygon points="10,150 10,96 70,56 150,92 150,152" fill="#c89868"/><polygon points="10,96 70,56 150,92 70,86" fill="#e2bb8d"/><polygon points="40,152 78,92 112,152" fill="#3d2418"/>
+<rect x="6" y="150" width="150" height="10" fill="#8a4f35"/><path d="M14 154h134" stroke="#d99a5a" stroke-width="3" stroke-dasharray="6 4"/>
+<g class="flick"><path d="M318 150c-8-8-6-18 0-28 2 8 10 10 10 20 0 6-4 8-10 8z" fill="#ffb347"/></g>
+<rect x="296" y="152" width="44" height="7" rx="3" fill="#4a2a1c"/>
+<rect width="400" height="200" fill="url(#shade)"/></svg>`;
+
+const splashScene=()=>`<svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMax slice">
+<defs><linearGradient id="sd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b3b2c"/><stop offset="1" stop-color="#2b1a14"/></linearGradient>
+<radialGradient id="fg" cx=".5" cy=".6" r=".5"><stop offset="0" stop-color="#ff9a3c" stop-opacity=".75"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>
+<linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff6a1a"/><stop offset=".6" stop-color="#ffb23a"/><stop offset="1" stop-color="#fff0a8"/></linearGradient></defs>
+<path d="M0 250 Q120 215 250 245 T420 235 V520H0Z" fill="#4a3226"/>
+<path d="M0 300 Q150 270 300 300 T420 290 V520H0Z" fill="url(#sd)"/>
+<polygon points="-10,330 -10,190 60,130 175,200 175,330" fill="#a27a52"/><polygon points="-10,190 60,130 175,200 60,215" fill="#cfa275"/><polygon points="20,332 75,206 135,332" fill="#241109"/>
+<path d="M-10 330h190v26H-10z" fill="#7a3f2d"/><path d="M-6 344h180" stroke="#e0a45a" stroke-width="4" stroke-dasharray="9 6"/>
+<ellipse cx="240" cy="440" rx="190" ry="100" fill="url(#fg)"/>
+<ellipse cx="240" cy="470" rx="160" ry="28" fill="rgba(0,0,0,.35)"/>
+<g class="flick"><path d="M240 450c-34-30-30-70-6-110 6 30 36 40 34 80 8-14 18-26 14-46 24 28 22 64-4 80-10 8-22 8-38-4z" fill="url(#fl)"/></g>
+<g class="flick b" style="transform-origin:240px 450px"><path d="M236 450c-18-18-14-44 0-66 4 18 22 24 20 46 6-6 10-14 8-24 14 18 12 38-4 46-8 4-18 2-24-2z" fill="#ffd36a" opacity=".9"/></g>
+<g class="flick c" style="transform-origin:240px 450px"><path d="M240 450c-8-8-8-20 0-30 2 8 10 12 8 20-2 6-4 8-8 10z" fill="#fff6c8"/></g>
+<g fill="#3a2418" stroke="#1d100a" stroke-width="2"><rect x="150" y="452" width="86" height="20" rx="10" transform="rotate(-8 150 452)"/><rect x="240" y="448" width="90" height="22" rx="11" transform="rotate(10 240 448)"/><rect x="180" y="462" width="100" height="24" rx="12"/><rect x="120" y="474" width="70" height="20" rx="10" transform="rotate(6 120 474)"/><rect x="280" y="470" width="80" height="22" rx="11" transform="rotate(-6 280 470)"/></g>
+<path d="M155 470h14M200 476h30M300 468h20" stroke="#f08a3a" stroke-width="3" opacity=".7" stroke-linecap="round"/></svg>`;
+
+/* ===================== البيانات ===================== */
+const P = {
+  shafa:{n:'حطب شفة',d:'جودة عالية وتولع بسرعة',p:70},
+  hail:{n:'حطب حائل',d:'مناسب للبر والرحلات',p:60},
+  samar:{n:'حطب سمر',d:'كثيف ويستمر لفترة أطول',p:80},
+  shabba:{n:'شَبّة بيضاء',d:'تولع النار بسرعة ومناسبة للبر',p:15},
+  gas:{n:'غاز البر',d:'قوة أعلى وأداء أطول',p:35},
+  offer:{n:'حطب شفة (عرض خاص)',d:'عرض اليوم',p:63}
+};
+const STAGES=[
+  {t:0,l:'تم استلام الطلب'},
+  {t:12,l:'قيد التجهيز'},
+  {t:25,l:'في الطريق إليك'},
+  {t:40,l:'تم التوصيل بنجاح'}
+];
+const initialNotifs=()=>[
+  {t:'أهلاً بك في جمرة 🔥',d:'نموذج أولي تفاعلي لمشروع تطبيق توصيل الحطب ومستلزمات البر.',read:false},
+  {t:'عرض خاص',d:'حطب شفة بأفضل سعر – جرّب العرض الآن.',read:false}
+];
+
+/* ===================== الحالة ===================== */
+let st = null;
+function resetState(){
+  const prevMode = (st && st.mode) ? st.mode : 'frame';
+  st={stack:['splash'],cart:{},orders:[],notifs:initialNotifs(),seq:1001,mode:prevMode};
+}
+resetState();
+
+const $=id=>document.getElementById(id);
+const view=$('view'),nav=$('nav'),cartbar=$('cartbar'),wrap=$('wrap'),sheet=$('sheet'),toastEl=$('toast'),phone=$('phone'),statusEl=$('status');
+const money=n=>n.toLocaleString('en-US')+' ريال';
+const cur=()=>st.stack[st.stack.length-1];
+const cartCount=()=>Object.values(st.cart).reduce((a,b)=>a+b,0);
+const cartTotal=()=>Object.entries(st.cart).reduce((a,[k,q])=>a+P[k].p*q,0);
+const unread=()=>st.notifs.filter(n=>!n.read).length;
+
+let toastT;
+function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),1900)}
+
+/* ===================== مكوّنات ===================== */
+const productCard=(id)=>{const p=P[id];return `
+<div class="pcard"><div class="t"><h3>${p.n}</h3><p>${p.d}</p><div class="pr">من ${p.p} ريال</div>
+<button class="btn-dark" data-act="add" data-id="${id}">اطلب الآن</button></div><div class="im">${IMG[id]()}</div></div>`};
+
+const topBar=(title,icon,withCart=true)=>`
+<div class="top"><button class="back" data-act="back" aria-label="رجوع">${I.back}</button><h2>${icon||''}${title}</h2>
+${withCart?`<button class="ibtn cartbtn" data-act="cart" aria-label="السلة">${I.cart}${cartCount()?`<span class="badge">${cartCount()}</span>`:''}</button>`:''}</div>`;
+
+const protoNote=`<div class="note">${I.info}<div><b>ملاحظة العرض:</b> هذا نموذج أولي تفاعلي (Prototype) لمشروع مدرسي؛ جميع الطلبات والمدفوعات تُحاكي تجربة المستخدم الفعلية.</div></div>`;
+
+const SCREENS={
+splash:()=>`<div class="stars"></div><div class="scene">${splashScene()}</div>
+<div class="logo">${flameIcon()}<h1>جمرة</h1><p>نوصل لك الحطب وكل ما تحتاجه للبر</p></div>
+<button class="go" data-act="start"><span>ابدأ الآن</span>${I.chev.replace('<svg','<svg style="width:22px;height:22px"')}</button>`,
+
+home:()=>`<div class="inner">
+<div class="hdr"><div class="logo-row">${flameIcon()}<b>جمرة</b></div>
+<div style="display:flex;gap:2px"><button class="ibtn" data-act="notifs" aria-label="التنبيهات">${I.bell}${unread()?`<span class="badge">${unread()}</span>`:''}</button><button class="ibtn" data-act="cart" aria-label="السلة">${I.cart}${cartCount()?`<span class="badge">${cartCount()}</span>`:''}</button></div></div>
+<div class="hero">${heroSVG()}<div class="tx">دفا البر ..<br>بين يديك <span style="color:#ffd9c2">♥</span></div>
+<button class="cta" data-act="go" data-to="wood">اطلب الآن ${I.cart}</button></div>
+<div class="quick">
+<button class="tile" data-act="go" data-to="services">${I.headset}<span>خدماتنا</span></button>
+<button class="tile" data-act="go" data-to="wood">${I.logs}<span>أنواع الحطب</span></button>
+<button class="tile" data-act="go" data-to="gas">${I.gas}<span>الغازات</span></button></div>
+<div class="sec">${flameIcon()}<span>عروضنا</span></div>
+<div class="offer"><div class="t"><h4>حطب شُفّة ${I.tag}</h4><p>بأفضل سعر</p><div class="pr">63 ريال <s>70 ريال</s></div><button class="btn-dark" data-act="add" data-id="offer">اطلب الآن</button></div><div class="im">${IMG.offer()}</div></div>
+</div>`,
+
+wood:()=>`<div class="inner">${topBar('أنواع الحطب',I.logs)}${productCard('shafa')}${productCard('hail')}${productCard('samar')}</div>`,
+gas:()=>`<div class="inner">${topBar('الغازات',I.gas)}${productCard('shabba')}${productCard('gas')}</div>`,
+
+services:()=>`<div class="inner">${topBar('خدماتنا',I.headset,false)}
+<div class="list">
+<div class="row">${I.truck}<span>توصيل سريع لجميع مناطق البر</span></div>
+<div class="row">${I.headset}<span>دعم عملاء على مدار 24 ساعة</span></div>
+<div class="row">${I.card}<span>إمكانية الدفع الإلكتروني</span></div>
+<div class="row">${I.pin}<span>متابعة الطلب لحظة بلحظة</span></div></div>
+<button class="btn-ghost" data-act="go" data-to="support">${I.chat}تواصل معنا</button></div>`,
+
+support:()=>`<div class="inner">${topBar('خدمة العملاء',I.headset,false)}
+<div class="contact"><div class="wel">نحن هنا لخدمتكم ..<br>تواصل معنا بأي استفسار</div>
+<button class="copt" data-act="contact" data-k="call"><div class="tt">اتصال مباشر<small>920123456</small></div>${I.phone}</button>
+<button class="copt" data-act="contact" data-k="wa"><div class="tt">واتساب<small>0551234567</small></div>${I.wa}</button>
+<button class="copt" data-act="contact" data-k="mail"><div class="tt">البريد الإلكتروني<small>info@jamrah.sa</small></div>${I.mail}</button>
+<button class="send" data-act="msg">${I.send}إرسال رسالة</button></div>${protoNote}</div>`,
+
+orders:()=>{
+  const body=st.orders.length?st.orders.slice().reverse().map(orderCard).join(''):
+  `<div class="empty">${I.box}<h3>لا توجد طلبات بعد</h3><p>أضف منتجات للسلة وأتمم طلباً ليظهر تتبعه هنا</p><button class="btn-copper" style="max-width:240px;margin:auto" data-act="go" data-to="wood">تصفح الحطب</button></div>`;
+  return `<div class="inner"><div class="top"><h2 style="margin-inline-start:6px">${I.box}الطلبات</h2></div>${body}${st.orders.length?protoNote:''}</div>`},
+
+account:()=>`<div class="inner"><div class="top"><h2 style="margin-inline-start:6px">${I.user}حسابي</h2></div>
+<div class="prof"><div class="avatar">ز</div><h3>عميل جمرة</h3><p>عضوية مميزة · المملكة العربية السعودية</p>
+<div class="stats"><div><b>${st.orders.length}</b><span>طلباتي</span></div><div><b>${120+st.orders.length*25}</b><span>نقاط جمرة</span></div><div><b>VIP</b><span>العضوية</span></div></div></div>
+<div class="list">
+<button class="row" data-act="demo" data-m="عناويني">${I.pinline}<span>عناويني<span class="sub">مخيم الرمال – منطقة البر</span></span></button>
+<button class="row" data-act="demo" data-m="طرق الدفع">${I.card2}<span>طرق الدفع<span class="sub">دفع إلكتروني / مدى / Apple Pay</span></span></button>
+<button class="row" data-act="demo" data-m="المفضلة">${I.heart}<span>المفضلة</span></button>
+<button class="row" data-act="notifs">${I.bell}<span>التنبيهات<span class="sub">${unread()} غير مقروءة</span></span></button></div>${protoNote}</div>`,
+
+more:()=>`<div class="inner"><div class="top"><h2 style="margin-inline-start:6px">${I.dots}المزيد</h2></div>
+<div class="list">
+<button class="row" data-act="go" data-to="support">${I.headset}<span>خدمة العملاء</span></button>
+<button class="row" data-act="go" data-to="services">${I.truck}<span>خدماتنا</span></button>
+<button class="row" data-act="go" data-to="wood">${I.logs}<span>أنواع الحطب</span></button>
+<button class="row" data-act="go" data-to="gas">${I.gas}<span>الغازات ومستلزمات الإشعال</span></button>
+<button class="row" data-act="about">${I.info}<span>عن مشروع «جمرة»</span></button>
+<button class="row" data-act="demo" data-m="مشاركة التطبيق">${I.share}<span>شارك التطبيق</span></button></div>${protoNote}</div>`
+};
+
+function stageOf(o){const s=(Date.now()-o.t)/1000;let k=0;STAGES.forEach((x,i)=>{if(s>=x.t)k=i});return k}
+function orderCard(o){
+  const k=stageOf(o);
+  return `<div class="ocard"><div class="oh"><b>طلب #${o.id}</b><span class="pill ${k==3?'done':''}">${STAGES[k].l}</span></div>
+  <div class="items">${o.items.map(i=>`${P[i.id].n} × ${i.q}`).join('<br>')}</div>
+  <div class="tot"><span>الإجمالي</span><span>${money(o.total)}</span></div>
+  <div class="steps">${STAGES.map((s,i)=>`<div class="step ${i<=k?'on':''} ${i==k&&k<3?'cur':''}"><i></i>${['استلام','تجهيز','في الطريق','تسليم'][i]}</div>`).join('')}</div></div>`}
+
+/* ===================== العرض ===================== */
+const NAVS=[['home','الرئيسية','home'],['orders','الطلبات','box'],['account','حسابي','user'],['more','المزيد','dots']];
+const TABS=['home','orders','account','more'];
+function render(keepScroll){
+  const c=cur(), top=view.scrollTop;
+  view.className='view'+(c==='splash'?' splash':'');
+  view.innerHTML=SCREENS[c]();
+  if(keepScroll) view.scrollTop=top; else view.scrollTop=0;
+  statusEl.classList.toggle('light',false);
+  const showNav=TABS.includes(c);
+  nav.classList.toggle('hide',!showNav);
+  nav.innerHTML=NAVS.map(([k,l,ic])=>`<button class="${c===k?'on':''}" data-act="tab" data-to="${k}">${I[ic]}<span>${l}</span>${k==='orders'&&st.orders.length?`<i class="nb">${st.orders.length}</i>`:''}</button>`).join('');
+  updateCartbar();
+}
+function updateCartbar(){
+  const c=cur(), ok=['home','wood','gas'].includes(c)&&cartCount()>0;
+  cartbar.classList.toggle('show',ok);
+  cartbar.classList.toggle('low',!TABS.includes(c));
+  cartbar.innerHTML=`<span class="l">${I.cart}عرض السلة (${cartCount()})</span><span>${money(cartTotal())}</span>`;
+  cartbar.onclick=()=>openCart();
+}
+function go(to){st.stack.push(to);render()}
+function back(){if(st.stack.length>1){st.stack.pop();render()}}
+function tab(to){st.stack=[to];render()}
+
+/* ===================== النوافذ ===================== */
+function openSheet(html){sheet.innerHTML=`<div class="grab"></div>`+html;wrap.classList.add('show');sheet.scrollTop=0}
+function closeSheet(){wrap.classList.remove('show')}
+wrap.addEventListener('click',e=>{if(e.target===wrap)closeSheet()});
+
+function openCart(){
+  const ids=Object.keys(st.cart);
+  if(!ids.length){openSheet(`<h3>${I.cart}السلة</h3><div class="empty" style="padding:20px 0;color:#6f5649">${I.cart}<h3 style="justify-content:center;color:#2b1a15">السلة فارغة</h3><p>اضغط «اطلب الآن» على أي منتج لإضافته</p></div><button class="btn-dark big" data-act="close">حسناً</button>`);return}
+  openSheet(`<h3>${I.cart}سلة المشتريات</h3>
+  ${ids.map(id=>`<div class="citem"><div class="ci">${IMG[id]()}</div><div class="cn">${P[id].n}<small>${P[id].p} ريال للوحدة</small></div>
+  <div class="qty"><button data-act="inc" data-id="${id}">${I.plus}</button><b>${st.cart[id]}</b><button data-act="dec" data-id="${id}">${I.minus}</button></div></div>`).join('')}
+  <div class="sum" style="margin-top:8px"><span>المجموع</span><span>${money(cartTotal())}</span></div>
+  <div class="sum"><span>التوصيل</span><span style="color:#3f8a3f">مجاني</span></div>
+  <div class="sum t"><span>الإجمالي</span><span>${money(cartTotal())}</span></div>
+  <div style="display:grid;gap:8px;margin-top:12px"><button class="btn-dark big" data-act="checkout">إتمام الطلب</button><button class="btn-line" data-act="close">متابعة التسوق</button></div>`);
+}
+function openCheckout(){
+  openSheet(`<h3>${I.card2}إتمام الطلب</h3>
+  <div class="fld"><label>العميل</label><input value="عميل جمرة" disabled></div>
+  <div class="fld"><label>عنوان التوصيل</label><select><option>مخيم الرمال – منطقة البر</option><option>استراحة الوادي</option><option>مخيم الشتاء – الثمامة</option></select></div>
+  <div class="fld"><label>طريقة الدفع</label><div class="pay"><label><input type="radio" name="pay" checked><span>دفع إلكتروني</span></label><label><input type="radio" name="pay"><span>الدفع عند الاستلام</span></label></div></div>
+  <div class="sum t"><span>الإجمالي</span><span>${money(cartTotal())}</span></div>
+  <div style="display:grid;gap:8px;margin-top:12px"><button class="btn-dark big" data-act="place">تأكيد الطلب</button><button class="btn-line" data-act="cart">رجوع للسلة</button></div>`);
+}
+function placeOrder(){
+  const items=Object.entries(st.cart).map(([id,q])=>({id,q}));
+  const o={id:'JM-'+(st.seq++),t:Date.now(),items,total:cartTotal(),stage:0};
+  st.orders.push(o);st.cart={};
+  st.notifs.unshift({t:'تم استلام الطلب بنجاح',d:`طلبك #${o.id} قيد المتابعة.`,read:false});
+  openSheet(`<div class="okbox"><div class="ck">${I.check}</div><h3>تم استلام طلبك بنجاح!</h3><p>رقم الطلب: <b>#${o.id}</b><br>يمكنك متابعة حالة التوصيل مباشرة من تبويب الطلبات.</p>
+  <div style="display:grid;gap:8px"><button class="btn-dark big" data-act="trackorders">تتبع الطلب</button><button class="btn-line" data-act="close">العودة للتسوق</button></div></div>`);
+  render(true);
+}
+function openNotifs(){
+  openSheet(`<h3>${I.bell}التنبيهات</h3>${st.notifs.map(n=>`<div class="nitem ${n.read?'read':''}"><i class="dot"></i><div><b>${n.t}</b><span>${n.d}</span></div></div>`).join('')}<button class="btn-dark big" style="margin-top:12px" data-act="close">إغلاق</button>`);
+  st.notifs.forEach(n=>n.read=true);render(true);
+}
+function openContact(k){
+  const M={call:['اتصال مباشر',I.phone,'920123456','جاري الاتصال… (محاكاة)','لن يتم إجراء أي اتصال حقيقي أثناء العرض.'],
+           wa:['واتساب',I.wa,'0551234567','فتح محادثة واتساب… (محاكاة)','هذه محاكاة لواجهة التواصل داخل التطبيق.'],
+           mail:['البريد الإلكتروني',I.mail,'info@jamrah.sa','فتح نموذج البريد… (محاكاة)','هذه محاكاة لواجهة المراسلة داخل التطبيق.']}[k];
+  openSheet(`<div class="okbox"><div class="ck" style="background:var(--copper2)">${M[1].replace('<svg','<svg style="width:42px;height:42px"')}</div><h3>${M[0]}</h3>
+  <p style="font-size:20px;color:#2b1a15;font-weight:800;direction:ltr">${M[2]}</p><p><b>${M[3]}</b><br>${M[4]}</p><button class="btn-dark big" data-act="close">حسناً</button></div>`);
+}
+function openMsg(){
+  openSheet(`<h3>${I.send}إرسال رسالة</h3>
+  <div class="fld"><label>الاسم</label><input id="mName" placeholder="اكتب اسمك"></div>
+  <div class="fld"><label>رسالتك</label><textarea id="mText" placeholder="اكتب استفسارك أو ملاحظتك هنا…"></textarea></div>
+  <div style="display:grid;gap:8px;margin-top:8px"><button class="btn-dark big" data-act="sendmsg">${I.send.replace('<svg','<svg style="width:20px;height:20px"')}إرسال</button><button class="btn-line" data-act="close">إلغاء</button></div>`);
+}
+function sentMsg(){
+  openSheet(`<div class="okbox"><div class="ck">${I.check}</div><h3>تم إرسال رسالتك بنجاح</h3><p>شكراً لتواصلك مع فريق «جمرة»، سيتم الرد عليك في أقرب وقت.</p><button class="btn-dark big" data-act="close">تم</button></div>`);
+}
+function openAbout(){
+  openSheet(`<h3>${I.info}عن مشروع «جمرة»</h3><p style="line-height:1.9;font-size:14.5px;color:#4a352c;margin-bottom:12px">«جمرة» فكرة تطبيق متخصص في توصيل الحطب ومستلزمات البر والكشتات في المملكة العربية السعودية، ويجمع بين سهولة الطلب والتوصيل السريع ومتابعة الطلب لحظة بلحظة.<br><br>هذا النموذج الأولي تفاعلي لمشروع مدرسي لعرض تجربة المستخدم المتكاملة.</p><button class="btn-dark big" data-act="close">إغلاق</button>`);
+}
+
+/* ===================== الأحداث ===================== */
+phone.addEventListener('click',e=>{
+  const el=e.target.closest('[data-act]'); if(!el)return;
+  const a=el.dataset.act,id=el.dataset.id;
+  switch(a){
+    case 'start': tab('home');break;
+    case 'go': go(el.dataset.to);break;
+    case 'tab': tab(el.dataset.to);break;
+    case 'back': back();break;
+    case 'add': st.cart[id]=(st.cart[id]||0)+1; toast(`تمت إضافة ${P[id].n} للسلة ✓`); render(true);break;
+    case 'cart': openCart();break;
+    case 'inc': st.cart[id]++; openCart(); render(true);break;
+    case 'dec': st.cart[id]--; if(st.cart[id]<=0)delete st.cart[id]; openCart(); render(true);break;
+    case 'close': closeSheet();break;
+    case 'checkout': openCheckout();break;
+    case 'place': placeOrder();break;
+    case 'trackorders': closeSheet(); tab('orders');break;
+    case 'notifs': openNotifs();break;
+    case 'contact': openContact(el.dataset.k);break;
+    case 'msg': openMsg();break;
+    case 'sendmsg': sentMsg();break;
+    case 'about': openAbout();break;
+    case 'demo': toast(`«${el.dataset.m}» جاهزة للعرض التفاعلي`);break;
+  }
+});
+
+/* محاكاة تقدم حالة الطلبات */
+setInterval(()=>{
+  let changed=false;
+  st.orders.forEach(o=>{const k=stageOf(o);if(k!==o.stage){o.stage=k;changed=true;
+    st.notifs.unshift({t:`طلب #${o.id}: ${STAGES[k].l}`,d:'تحديث جديد لحالة الطلب.',read:false});toast(`طلب #${o.id} — ${STAGES[k].l}`)}});
+  if(changed) render(true);
+},1000);
+
+/* ===================== أزرار العرض ===================== */
+function applyMode(){
+  document.body.classList.toggle('full',st.mode==='full');
+  $('btnMode').innerHTML=st.mode==='full'
+    ? `${I.home.replace('<svg','<svg')}<span class="lbl">عرض إطار الجوال</span>`
+    : `${I.box}<span class="lbl">عرض ملء الشاشة</span>`;
+  $('btnFs').innerHTML=`${I.globe}<span class="lbl">${document.fullscreenElement?'خروج من ملء المتصفح':'ملء المتصفح (F11)'}</span>`;
+  $('btnReset').innerHTML=`${I.trash}<span class="lbl">إعادة ضبط العرض</span>`;
+}
+$('btnMode').onclick=()=>{st.mode=st.mode==='full'?'frame':'full';applyMode()};
+$('btnFs').onclick=()=>{
+  if(!document.fullscreenElement){(document.documentElement.requestFullscreen||function(){}).call(document.documentElement)}
+  else document.exitFullscreen();
+};
+document.addEventListener('fullscreenchange',applyMode);
+$('btnReset').onclick=()=>{closeSheet();resetState();applyMode();render();toast('تمت إعادة ضبط العرض ✓')};
+
+applyMode();render();
+</script>
+</body>
+</html>
